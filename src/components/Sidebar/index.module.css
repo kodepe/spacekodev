@@ -1,0 +1,96 @@
+.sideBarContainer {
+    height: 100%;
+    max-width: 280px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebarShow {
+    animation-name: sidebarExpand;
+    animation-timing-function: ease;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+    animation-delay: 0s;
+}
+
+.sidebarHide {
+    animation-name: sidebarCollapse;
+    animation-timing-function: ease;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    animation-delay: 0s;
+}
+
+@keyframes sidebarCollapse {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 100px;
+    }
+}
+
+@keyframes sidebarExpand {
+    from {
+        width: 100px;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+.hideItem {
+    animation-name: itemCollapse;
+    animation-timing-function: ease;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+}
+
+.showItem {
+    animation-name: itemExpand;
+    animation-timing-function: ease;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes itemCollapse {
+    from {
+        font-size: 20px;
+    }
+
+    to {
+        font-size: 16px;
+    }
+}
+
+@keyframes itemExpand {
+    from {
+        font-size: 16px;
+    }
+
+    to {
+        font-size: 20px;
+    }
+}
+
+.linkShow {
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 30px;
+}
+
+.linkShow::first-letter {
+    color: #000;
+}
+.linkHide{
+    position: absolute;
+}
+.linkHide::first-letter{
+    position: relative;
+}
