@@ -7,6 +7,7 @@ const colors = {
   warning: "#FF9900",
   precaution: "#FFF700",
   link: "#1677ff",
+  dark: "#373739",
 };
 
 export { colors };
