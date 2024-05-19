@@ -1,5 +1,6 @@
 import { Typography } from "@material-tailwind/react";
 import { HeartIcon } from "@heroicons/react/24/solid";
+import { SKTypography } from "@/material_components/atoms/Typography";
 
 interface Props {
   brandName?: string;
@@ -12,11 +13,11 @@ export function Footer({ brandName, brandLink, routes = [] }: Props) {
 
   return (
     <footer className="py-2">
-      <div className="flex w-full flex-wrap items-center justify-center gap-6 px-2 md:justify-between">
-        <Typography variant="small" className="font-normal text-inherit">
+      <div className="flex w-full flex-wrap items-center justify-center gap-6 px-2 md:justify-center">
+        <SKTypography variant="small" className="font-normal text-inherit">
           &copy; {year}, made with{" "}
           <HeartIcon className="-mt-0.5 inline-block h-3.5 w-3.5 text-red-600" />
-          {"by"}
+          {"by "}
           <a
             href={brandLink}
             target="_blank"
@@ -25,22 +26,7 @@ export function Footer({ brandName, brandLink, routes = [] }: Props) {
             {brandName}
           </a>
           {"for a better web."}
-        </Typography>
-        <ul className="flex items-center gap-4">
-          {routes.map(({ name, path }: any) => (
-            <li key={name}>
-              <Typography
-                as="a"
-                href={path}
-                target="_blank"
-                variant="small"
-                className="py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500"
-              >
-                {name}
-              </Typography>
-            </li>
-          ))}
-        </ul>
+        </SKTypography>
       </div>
     </footer>
   );

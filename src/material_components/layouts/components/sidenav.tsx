@@ -9,9 +9,11 @@ import {
 import {
   useMaterialTailwindController,
   setOpenSidenav,
-} from "@/context/MaterialTailwind";
+} from "@/material_components/context/MaterialTailwind";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { SKTypography } from "@/material_components/atoms/Typography";
+import { SKButton } from "@/material_components/atoms/button";
 
 export type sidenavTapsProps = {
   dark: string;
@@ -26,40 +28,46 @@ export interface SideNavProps {
   routes: any[];
 }
 
-export function Sidenav({ brandName, routes }: SideNavProps) {
+export const SKSidenav = ({ brandName, routes }: SideNavProps) => {
   const router = usePathname();
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
-  const sidenavTypes: sidenavTapsProps = {
+  const sidenavTypes: any = {
     dark: "bg-gradient-to-br from-gray-800 to-gray-900",
     white: "bg-white shadow-sm",
     transparent: "bg-transparent",
   };
-
+  console.log(openSidenav);
   return (
     <aside
       className={`${sidenavTypes[sidenavType]} ${
         openSidenav ? "translate-x-0" : "-translate-x-80"
-      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0 border border-primary`}
+      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0 border border-gray-200`}
     >
       <div className={`relative`}>
         <Link href="/" className="py-6 px-8 text-center">
-          <Typography
+          <SKTypography
             variant="h6"
             color={sidenavType === "dark" ? "white" : "blue-gray"}
           >
             {brandName}
-          </Typography>
+          </SKTypography>
         </Link>
         <IconButton
+          placeholder={"IconButton"}
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
           variant="text"
-          color="white"
           size="sm"
           ripple={false}
-          className="absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden"
+          className="absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden text-[#000]"
           onClick={() => setOpenSidenav(dispatch, false)}
         >
-          <XMarkIcon strokeWidth={2.5} className="h-5 w-5 text-white" />
+          <XMarkIcon
+            strokeWidth={2.5}
+            className="h-5 w-5 text-[#000]"
+            color="#000"
+          />
         </IconButton>
       </div>
       <div className="m-4">
@@ -67,19 +75,19 @@ export function Sidenav({ brandName, routes }: SideNavProps) {
           <ul key={key} className="mb-4 flex flex-col gap-1">
             {title && (
               <li className="mx-3.5 mt-4 mb-2">
-                <Typography
+                <SKTypography
                   variant="small"
                   color={sidenavType === "dark" ? "white" : "blue-gray"}
                   className="font-black uppercase opacity-75"
                 >
                   {title}
-                </Typography>
+                </SKTypography>
               </li>
             )}
             {pages.map(({ icon, name, path }: any) => (
               <li key={name}>
                 <Link href={`/${layout}${path}`}>
-                  <Button
+                  <SKButton
                     variant={
                       router === `/${layout}${path}` ? "gradient" : "text"
                     }
@@ -94,13 +102,13 @@ export function Sidenav({ brandName, routes }: SideNavProps) {
                     fullWidth
                   >
                     {icon}
-                    <Typography
+                    <SKTypography
                       color="inherit"
                       className="font-medium capitalize"
                     >
                       {name}
-                    </Typography>
-                  </Button>
+                    </SKTypography>
+                  </SKButton>
                 </Link>
               </li>
             ))}
@@ -109,6 +117,4 @@ export function Sidenav({ brandName, routes }: SideNavProps) {
       </div>
     </aside>
   );
-}
-
-export default Sidenav;
+};

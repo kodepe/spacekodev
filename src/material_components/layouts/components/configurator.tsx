@@ -7,9 +7,17 @@ import {
   Typography,
   Chip,
 } from "@material-tailwind/react";
-import { setFixedNavbar, setOpenConfigurator, setSidenavColor, setSidenavType, useMaterialTailwindController } from "@/context/MaterialTailwind";
+import {
+  setFixedNavbar,
+  setOpenConfigurator,
+  setSidenavColor,
+  setSidenavType,
+  useMaterialTailwindController,
+} from "@/material_components/context/MaterialTailwind";
+import { SKTypography } from "@/material_components/atoms/Typography";
+import { SKButton } from "@/material_components/atoms/button";
 
-function formatNumber(number: number, decPlaces: number) {
+function formatNumber(number: any, decPlaces: any) {
   decPlaces = Math.pow(10, decPlaces);
 
   const abbrev = ["K", "M", "B", "T"];
@@ -40,7 +48,7 @@ export function Configurator() {
     controller;
   const [stars, setStars] = React.useState(0);
 
-  const sidenavColors = {
+  const sidenavColors: any = {
     white: "from-gray-100 to-gray-100 border-gray-200",
     dark: "from-black to-black border-gray-200",
     green: "from-green-400 to-green-600",
@@ -65,14 +73,17 @@ export function Configurator() {
     >
       <div className="flex items-start justify-between px-6 pt-8 pb-6">
         <div>
-          <Typography variant="h5" color="blue-gray">
+          <SKTypography variant="h5" color="blue-gray">
             Dashboard Configurator
-          </Typography>
-          <Typography className="font-normal text-blue-gray-600">
+          </SKTypography>
+          <SKTypography className="font-normal text-blue-gray-600">
             See our dashboard options.
-          </Typography>
+          </SKTypography>
         </div>
         <IconButton
+          placeholder={"IconButton"}
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
           variant="text"
           color="blue-gray"
           onClick={() => setOpenConfigurator(dispatch, false)}
@@ -82,11 +93,11 @@ export function Configurator() {
       </div>
       <div className="py-4 px-6">
         <div className="mb-12">
-          <Typography variant="h6" color="blue-gray">
+          <SKTypography variant="h6" color="blue-gray">
             Sidenav Colors
-          </Typography>
+          </SKTypography>
           <div className="mt-3 flex items-center gap-2">
-            {Object.keys(sidenavColors).map((color) => (
+            {Object.keys(sidenavColors).map((color: any) => (
               <span
                 key={color}
                 className={`h-6 w-6 cursor-pointer rounded-full border bg-gradient-to-br transition-transform hover:scale-105 ${
@@ -100,44 +111,44 @@ export function Configurator() {
           </div>
         </div>
         <div className="mb-12">
-          <Typography variant="h6" color="blue-gray">
+          <SKTypography variant="h6" color="blue-gray">
             Sidenav Types
-          </Typography>
-          <Typography variant="small" color="gray">
+          </SKTypography>
+          <SKTypography variant="small" color="gray">
             Choose between 3 different sidenav types.
-          </Typography>
+          </SKTypography>
           <div className="mt-3 flex items-center gap-2">
-            <Button
+            <SKButton
               variant={sidenavType === "dark" ? "gradient" : "outlined"}
               onClick={() => setSidenavType(dispatch, "dark")}
             >
               Dark
-            </Button>
-            <Button
+            </SKButton>
+            <SKButton
               variant={sidenavType === "transparent" ? "gradient" : "outlined"}
               onClick={() => setSidenavType(dispatch, "transparent")}
             >
               Transparent
-            </Button>
-            <Button
+            </SKButton>
+            <SKButton
               variant={sidenavType === "white" ? "gradient" : "outlined"}
               onClick={() => setSidenavType(dispatch, "white")}
             >
               White
-            </Button>
+            </SKButton>
           </div>
         </div>
         <div className="mb-12">
           <hr />
           <div className="flex items-center justify-between py-5">
-            <Typography variant="h6" color="blue-gray">
+            <SKTypography variant="h6" color="blue-gray">
               Navbar Fixed
-            </Typography>
-            <Switch
+            </SKTypography>
+            {/* <Switch
               id="navbar-fixed"
               value={fixedNavbar}
               onChange={() => setFixedNavbar(dispatch, !fixedNavbar)}
-            />
+            /> */}
           </div>
           <hr />
           <div className="my-8 flex flex-col gap-4">
@@ -145,25 +156,25 @@ export function Configurator() {
               href="https://www.creative-tim.com/product/material-tailwind-dashboard-react?rel=mtdr"
               target="_black"
             >
-              <Button variant="gradient" fullWidth>
+              <SKButton variant="gradient" fullWidth>
                 Free Download
-              </Button>
+              </SKButton>
             </a>
             <a
               href="https://www.material-tailwind.com/docs/react/installation?rel=mtdr"
               target="_black"
             >
-              <Button variant="outlined" color="blue-gray" fullWidth>
+              <SKButton variant="outlined" color="blue-gray" fullWidth>
                 View Documentation
-              </Button>
+              </SKButton>
             </a>
             <a
               href="https://www.material-tailwind.com/blocks/react?rel=mtdr"
               target="_black"
             >
-              <Button variant="outlined" color="blue-gray" fullWidth>
+              <SKButton variant="outlined" color="blue-gray" fullWidth>
                 Material Tailwind PRO
-              </Button>
+              </SKButton>
             </a>
           </div>
           <a
@@ -201,18 +212,18 @@ export function Configurator() {
           </a>
         </div>
         <div className="text-center">
-          <Typography variant="h6" color="blue-gray">
+          <SKTypography variant="h6" color="blue-gray">
             Thank you for sharing ❤️
-          </Typography>
+          </SKTypography>
           <div className="mt-4 flex justify-center gap-2">
-            <Button variant="gradient" className="flex items-center gap-2">
+            <SKButton variant="gradient" className="flex items-center gap-2">
               <i className="fa-brands fa-twitter text-white" />
               Tweet
-            </Button>
-            <Button variant="gradient" className="flex items-center gap-2">
+            </SKButton>
+            <SKButton variant="gradient" className="flex items-center gap-2">
               <i className="fa-brands fa-facebook text-white" />
               Share
-            </Button>
+            </SKButton>
           </div>
         </div>
       </div>

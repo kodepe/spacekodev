@@ -1,10 +1,8 @@
 "use client";
 import React from "react";
-import PropTypes from "prop-types";
-import { BaseProps } from "@/types/base";
+import { TailwindBaseProps } from "@/material_components/types/base";
 
 export const MaterialTailwind = React.createContext<any>(null);
-MaterialTailwind.displayName = "MaterialTailwindContext";
 
 export function reducer(state: any, action: any) {
   switch (action.type) {
@@ -32,7 +30,9 @@ export function reducer(state: any, action: any) {
   }
 }
 
-export function MaterialTailwindControllerProvider({ children }: BaseProps) {
+export function MaterialTailwindControllerProvider({
+  children,
+}: TailwindBaseProps) {
   const initialState = {
     openSidenav: false,
     sidenavColor: "dark",
@@ -66,12 +66,6 @@ export function useMaterialTailwindController() {
 
   return context;
 }
-
-MaterialTailwindControllerProvider.displayName = "/src/context/index.jsx";
-
-MaterialTailwindControllerProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export const setOpenSidenav = (dispatch: any, value: any) =>
   dispatch({ type: "OPEN_SIDENAV", value });

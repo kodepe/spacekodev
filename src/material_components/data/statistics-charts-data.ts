@@ -1,4 +1,4 @@
-import chartsConfig from "@/configs/charts-config";
+import chartsConfig from "@/material_components/configs/charts-config";
 
 const websiteViewsChart = {
   type: "bar",

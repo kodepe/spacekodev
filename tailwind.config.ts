@@ -1,9 +1,31 @@
+import type { Config } from "tailwindcss";
 const withMT = require("@material-tailwind/react/utils/withMT");
 
-module.exports = withMT({
+const config: Config = withMT({
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#223366",
+        secondary: "#00C7C7",
+        light: "#F2F2F2",
+        danger: "#FF0000",
+        error: "#D95B43",
+        warning: "#FF9900",
+        precaution: "#FFF700",
+        link: "#1677ff",
+        dark: "#373739",
+        white: "#FFFFFF",
+        black: "#000000",
+      },
+    },
+    screens: {
+      sm: "640px", // Pantalla pequeña
+      md: "768px", // Pantalla mediana
+      lg: "1024px", // Pantalla grande
+      xl: "1280px", // Pantalla extra grande
+      "2xl": "1536px", // Pantalla extra extra grande
+    },
   },
   plugins: [],
 });
@@ -54,4 +76,4 @@ module.exports = withMT({
 //   },
 //   plugins: [],
 // });
-// export default config;
+export default config;
